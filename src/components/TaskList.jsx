@@ -1,4 +1,6 @@
-export default function TaskList({ tasks }) {
+import TaskItem from './TaskItem.jsx'
+
+export default function TaskList({ tasks, onUpdate, onDelete }) {
   if (tasks.length === 0) {
     return (
       <p className="empty">No tasks yet. Your task list is empty.</p>
@@ -8,12 +10,12 @@ export default function TaskList({ tasks }) {
   return (
     <ul className="task-list">
       {tasks.map((task) => (
-        <li key={task.id} className="task-item">
-          <span className="task-title">{task.title}</span>
-          {task.description && (
-            <span className="task-description">{task.description}</span>
-          )}
-        </li>
+        <TaskItem
+          key={task.id}
+          task={task}
+          onUpdate={onUpdate}
+          onDelete={onDelete}
+        />
       ))}
     </ul>
   )
