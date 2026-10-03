@@ -1,5 +1,5 @@
 import Header from './components/Header.jsx'
-import TaskList from './components/TaskList.jsx'
+import DateTimeHeading from './components/DateTimeHeading.jsx'
 import Footer from './components/Footer.jsx'
 
 export default function App() {
@@ -8,8 +8,8 @@ export default function App() {
   return (
     <div className="app">
       <Header />
+      <DateTimeHeading />
       <main className="main">
-        <TaskList tasks={tasks} />
       </main>
       <Footer />
     </div>
