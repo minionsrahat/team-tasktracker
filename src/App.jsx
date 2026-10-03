@@ -12,13 +12,23 @@ export default function App() {
     setTasks((prev) => [...prev, { id: crypto.randomUUID(), title, description }])
   }
 
+  function updateTask(id, changes) {
+    setTasks((prev) =>
+      prev.map((task) => (task.id === id ? { ...task, ...changes } : task))
+    )
+  }
+
+  function deleteTask(id) {
+    setTasks((prev) => prev.filter((task) => task.id !== id))
+  }
+
   return (
     <div className="app">
       <Header />
       <DateTimeHeading />
       <main className="main">
         <AddTaskForm onAdd={addTask} />
-        <TaskList tasks={tasks} />
+        <TaskList tasks={tasks} onUpdate={updateTask} onDelete={deleteTask} />
       </main>
       <Footer />
     </div>
