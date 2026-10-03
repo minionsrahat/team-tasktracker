@@ -63,6 +63,69 @@ body {
   border-radius: 8px;
 }
 
+.add-task-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.add-task-form input {
+  flex: 1 1 180px;
+  padding: 0.6rem 0.75rem;
+  font: inherit;
+  border: 1px solid #cbd5e0;
+  border-radius: 6px;
+  background: #fff;
+}
+
+.add-task-form input:focus {
+  outline: 2px solid #4a5568;
+  outline-offset: 1px;
+}
+
+.add-task-form button {
+  padding: 0.6rem 1.25rem;
+  font: inherit;
+  font-weight: 600;
+  color: #fff;
+  background: #2d3748;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.add-task-form button:hover:not(:disabled) {
+  background: #1a202c;
+}
+
+.add-task-form button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .task-list {
   list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.task-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.75rem 1rem;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+}
+
+.task-title {
+  font-weight: 600;
+}
+
+.task-description {
+  font-size: 0.875rem;
+  color: #718096;
 }

@@ -8,7 +8,12 @@ export default function TaskList({ tasks }) {
   return (
     <ul className="task-list">
       {tasks.map((task) => (
-        <li key={task.id}>{task.title}</li>
+        <li key={task.id} className="task-item">
+          <span className="task-title">{task.title}</span>
+          {task.description && (
+            <span className="task-description">{task.description}</span>
+          )}
+        </li>
       ))}
     </ul>
   )
