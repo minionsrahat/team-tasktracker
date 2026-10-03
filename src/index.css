@@ -1,3 +1,39 @@
+:root {
+  --bg: #f5f6fa;
+  --text: #222;
+  --text-muted: #718096;
+  --text-soft: #4a5568;
+  --heading: #2d3748;
+  --surface: #fff;
+  --border: #e2e8f0;
+  --border-strong: #cbd5e0;
+  --bar-bg: #2d3748;
+  --bar-text: #fff;
+  --accent: #2d3748;
+  --accent-hover: #1a202c;
+  --accent-text: #fff;
+  --focus: #4a5568;
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  --bg: #1a202c;
+  --text: #e2e8f0;
+  --text-muted: #a0aec0;
+  --text-soft: #cbd5e0;
+  --heading: #f7fafc;
+  --surface: #2d3748;
+  --border: #4a5568;
+  --border-strong: #4a5568;
+  --bar-bg: #171923;
+  --bar-text: #f7fafc;
+  --accent: #63b3ed;
+  --accent-hover: #90cdf4;
+  --accent-text: #1a202c;
+  --focus: #90cdf4;
+  color-scheme: dark;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -6,8 +42,9 @@
 
 body {
   font-family: system-ui, sans-serif;
-  background: #f5f6fa;
-  color: #222;
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.2s, color 0.2s;
 }
 
 .app {
@@ -18,10 +55,57 @@ body {
 
 .header,
 .footer {
-  background: #2d3748;
-  color: #fff;
+  background: var(--bar-bg);
+  color: var(--bar-text);
   padding: 1rem 1.5rem;
   text-align: center;
+}
+
+.header {
+  position: relative;
+}
+
+.theme-toggle {
+  position: absolute;
+  top: 50%;
+  right: 1.5rem;
+  transform: translateY(-50%);
+  padding: 0.4rem 0.8rem;
+  font: inherit;
+  font-size: 0.875rem;
+  color: var(--bar-text);
+  background: transparent;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+@media (max-width: 480px) {
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    text-align: left;
+  }
+
+  .header h1 {
+    font-size: 1.5rem;
+  }
+
+  .theme-toggle {
+    position: static;
+    transform: none;
+  }
 }
 
 .footer {
@@ -30,7 +114,7 @@ body {
 
 .datetime {
   text-align: center;
-  color: #4a5568;
+  color: var(--text-soft);
   padding: 1rem 1.5rem 0;
 }
 
@@ -42,7 +126,7 @@ body {
 .greeting {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #2d3748;
+  color: var(--heading);
   margin-bottom: 0.25rem;
 }
 
@@ -56,10 +140,10 @@ body {
 
 .empty {
   text-align: center;
-  color: #718096;
+  color: var(--text-muted);
   padding: 3rem 1rem;
-  background: #fff;
-  border: 2px dashed #cbd5e0;
+  background: var(--surface);
+  border: 2px dashed var(--border-strong);
   border-radius: 8px;
 }
 
@@ -74,13 +158,18 @@ body {
   flex: 1 1 180px;
   padding: 0.6rem 0.75rem;
   font: inherit;
-  border: 1px solid #cbd5e0;
+  color: var(--text);
+  border: 1px solid var(--border-strong);
   border-radius: 6px;
-  background: #fff;
+  background: var(--surface);
+}
+
+.add-task-form input::placeholder {
+  color: var(--text-muted);
 }
 
 .add-task-form input:focus {
-  outline: 2px solid #4a5568;
+  outline: 2px solid var(--focus);
   outline-offset: 1px;
 }
 
@@ -88,15 +177,15 @@ body {
   padding: 0.6rem 1.25rem;
   font: inherit;
   font-weight: 600;
-  color: #fff;
-  background: #2d3748;
+  color: var(--accent-text);
+  background: var(--accent);
   border: none;
   border-radius: 6px;
   cursor: pointer;
 }
 
 .add-task-form button:hover:not(:disabled) {
-  background: #1a202c;
+  background: var(--accent-hover);
 }
 
 .add-task-form button:disabled {
@@ -116,8 +205,8 @@ body {
   flex-direction: column;
   gap: 0.25rem;
   padding: 0.75rem 1rem;
-  background: #fff;
-  border: 1px solid #e2e8f0;
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 8px;
 }
 
@@ -127,5 +216,5 @@ body {
 
 .task-description {
   font-size: 0.875rem;
-  color: #718096;
+  color: var(--text-muted);
 }
