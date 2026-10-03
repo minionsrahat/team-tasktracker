@@ -30,10 +30,20 @@ body {
 
 .datetime {
   text-align: center;
-  font-size: 1.125rem;
-  font-weight: 500;
   color: #4a5568;
   padding: 1rem 1.5rem 0;
+}
+
+.datetime h2 {
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+.greeting {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 0.25rem;
 }
 
 .main {
